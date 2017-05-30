@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SierpinskiTriangle {
-	public static int SIZE = 1000;
+	public static int SIZE = 700;
 
 	JFrame frame;
 	JPanel panel;
