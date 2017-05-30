@@ -52,8 +52,11 @@ public class SierpinskiTriangle {
 		g2.draw3DRect(20, 20, size.width - 40, size.height - 40, true);
 
 		tri.setColor(Color.blue);
-		tri.drawPolygon(new int[] {100, 200, 300}, new int[] {100, 200, 100}, 3);
-		tri.fillPolygon(new int[] {100, 200, 300}, new int[] {100, 200, 100}, 3);
+
+		int[] xPoints = {100, 50, 150};
+		int[] yPoints = {100, 200, 200};
+		tri.drawPolygon(xPoints , yPoints, 3);
+		tri.fillPolygon(xPoints , yPoints, 3);
 	}
 
 }
