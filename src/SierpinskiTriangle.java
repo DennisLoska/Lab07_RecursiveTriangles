@@ -46,9 +46,14 @@ public class SierpinskiTriangle {
 
 	public void paintSierpinskiTriangle(Graphics g, Dimension size) {
 		Graphics2D g2 = (Graphics2D) g;
+		Graphics2D tri = (Graphics2D) g;
 		g2.setBackground(Color.white);
 		g2.clearRect(0, 0, size.width, size.height);
 		g2.draw3DRect(20, 20, size.width - 40, size.height - 40, true);
+
+		tri.setColor(Color.blue);
+		tri.drawPolygon(new int[] {100, 200, 300}, new int[] {100, 200, 100}, 3);
+		tri.fillPolygon(new int[] {100, 200, 300}, new int[] {100, 200, 100}, 3);
 	}
 
 }
