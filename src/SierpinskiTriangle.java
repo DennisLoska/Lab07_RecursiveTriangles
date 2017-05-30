@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SierpinskiTriangle {
-	public static int SIZE = 700;
+	public static int SIZE = 1000;
 
 	JFrame frame;
 	JPanel panel;
@@ -45,16 +45,10 @@ public class SierpinskiTriangle {
 	}
 
 	public void paintSierpinskiTriangle(Graphics g, Dimension size) {
-		Graphics2D g2 = (Graphics2D) g;
 		Graphics2D tri = (Graphics2D) g;
-		g2.setBackground(Color.white);
-		g2.clearRect(0, 0, size.width, size.height);
-		g2.draw3DRect(20, 20, size.width - 40, size.height - 40, true);
-
 		tri.setColor(Color.blue);
-
-		int[] xPoints = {100, 50, 150};
-		int[] yPoints = {100, 200, 200};
+		int[] xPoints = {500, 0, 1000};
+		int[] yPoints = {0, 1000, 1000};
 		tri.drawPolygon(xPoints , yPoints, 3);
 		tri.fillPolygon(xPoints , yPoints, 3);
 	}
