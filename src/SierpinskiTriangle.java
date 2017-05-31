@@ -37,7 +37,7 @@ public class SierpinskiTriangle {
                 middle = new Point(getSize().width / 2, 0);
                 right = new Point(getSize().width, height);
                 //sozusagen Beginn der Rekursion, falls recursionLevel > 1 ist.
-                paintSierpinskiTriangle(g, getSize(), 2, left, middle, right);
+                paintSierpinskiTriangle(g, getSize(), 8, left, middle, right);
             }
         };
         panel.addComponentListener(new ComponentAdapter() {
@@ -68,9 +68,8 @@ public class SierpinskiTriangle {
         Zeichnet alle Dreiecke und wird auch rekursiv aufgerufen - Erster aufruf erfolgt in der display()-Methode
      */
     public void paintSierpinskiTriangle(Graphics g, Dimension size, int recursionLevel, Point left, Point middle, Point right) {
+        Graphics2D tri = (Graphics2D) g;
         if (recursionLevel == 1) {
-            Graphics2D tri = (Graphics2D) g;
-            tri.setColor(Color.blue);
             //Erstellt ein Dreieck anhand der im Parameter übergebenen Punkte und deren Koordinaten
             int[] xPoints = {left.x, middle.x, right.x};
             int[] yPoints = {left.y, middle.y, right.y};
@@ -85,7 +84,7 @@ public class SierpinskiTriangle {
             /*
             Rekursion-Funktionalität, indem das Level der Rekursion pro Aufruf um 1 verringert wird
             Hierbei wird die Rekursion für jede Seite eines jeweiligen Dreiecks angewendet, daher auch 3 Aufrufe
-            pro Dreiecksseite.
+            1 pro Dreiecksseite.
              */
             paintSierpinskiTriangle(g, size, recursionLevel - 1, left, newTriPoint1, newTriPoint3);
             paintSierpinskiTriangle(g, size, recursionLevel - 1, newTriPoint1, middle, newTriPoint2);
