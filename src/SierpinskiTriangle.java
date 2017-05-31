@@ -10,47 +10,52 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SierpinskiTriangle {
-	public static int SIZE = 1000;
+    public static int SIZE = 1000;
 
-	JFrame frame;
-	JPanel panel;
+    int maxWidth;
+    int minWidth = 10;
+    int height = (int) ((maxWidth / 2) * Math.sqrt(3));
 
-	@SuppressWarnings("serial")
-	public void display() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel = new JPanel() {
-			@Override
-			public void paint(Graphics g) {
-				super.paint(g);
-				paintSierpinskiTriangle(g, getSize());
-			}
-		};
-		panel.addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent e) {
-				panel.repaint();
-			}
-		});
-		frame.setLayout(new BorderLayout());
-		frame.add(panel, BorderLayout.CENTER);
-		frame.pack();
-		frame.setSize(SIZE, SIZE);
-		frame.setVisible(true);
-	}
+    JFrame frame;
+    JPanel panel;
 
-	public static void main(String[] args) {
-		SierpinskiTriangle triangle = new SierpinskiTriangle();
-		triangle.display();
-	}
+    @SuppressWarnings("serial")
+    public void display() {
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel = new JPanel() {
+            @Override
+            public void paint(Graphics g) {
+                super.paint(g);
+                paintSierpinskiTriangle(g, getSize());
+            }
+        };
+        panel.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                panel.repaint();
+            }
+        });
+        frame.setLayout(new BorderLayout());
+        frame.add(panel, BorderLayout.CENTER);
+        frame.pack();
+        frame.setSize(SIZE, SIZE);
+        frame.setVisible(true);
+    }
 
-	public void paintSierpinskiTriangle(Graphics g, Dimension size) {
-		Graphics2D tri = (Graphics2D) g;
-		tri.setColor(Color.blue);
-		int[] xPoints = {500, 0, 1000};
-		int[] yPoints = {0, 1000, 1000};
-		tri.drawPolygon(xPoints , yPoints, 3);
-		tri.fillPolygon(xPoints , yPoints, 3);
-	}
+    public static void main(String[] args) {
+        SierpinskiTriangle triangle = new SierpinskiTriangle();
+        triangle.display();
+    }
+
+    public void paintSierpinskiTriangle(Graphics g, Dimension size) {
+        maxWidth = size.width;
+        Graphics2D tri = (Graphics2D) g;
+        tri.setColor(Color.blue);
+        int[] xPoints = {maxWidth / 2, 0, maxWidth};
+        int[] yPoints = {size.height - height, size.height, size.height};
+        tri.drawPolygon(xPoints, yPoints, 3);
+        tri.fillPolygon(xPoints, yPoints, 3);
+    }
 
 }
